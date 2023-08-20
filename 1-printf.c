@@ -10,6 +10,7 @@ void handle_int(va_list list, int *count)
 {
 	int digit = va_arg(list, int);
 	int digitCount = 0;
+	int i, j;
 
 	if (digit == 0)
 		digitCount = 1;
@@ -31,7 +32,7 @@ void handle_int(va_list list, int *count)
 
 	for (i = 0; i < digitCount; i++)
 	{
-		int dividor = 1;
+		int divisor = 1;
 		for (j = 1; j < digitCount- i; j++)
 			divisor *= 10;
 		int digit = (num / divisor) % 10;
