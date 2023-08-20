@@ -1,51 +1,42 @@
-#include <stdarg.h>
 #include "main.h"
 
 /**
- * _printf - prints output according to formats
- * @format: format specifier
- * Return: Always 0 (Success)
+ * handle_string - print string values
+ * @list: variable arguments
+ * @count: strinng count
+ * Return: Void
  */
-int _printf(const char *format, ...)
+void handle_string(va_list list, int *count)
 {
-	va_list list;
-	int count = 0, i = 0;
-	char *str;
+	char *str = va_arg(list, char *);
 
-	va_start(list, format);
-
-	for (; format[i] != '\0'; i++)
+	while (*str)
 	{
-		if (format[i] == '%')
-		{
-			i++;
-			switch (format[i])
-			{
-				case 's':
-					str = va_arg(list, char *);
-					while (*str)
-					{
-						_putchar(*str);
-						str++;
-						count++;
-					}
-					break;
-				case 'c':
-					_putchar((char)va_arg(list, int));
-					count++;
-					break;
-				case '%':
-					_putchar('%');
-					count++;
-					break;
-			}
-		}
-		else
-		{
-			_putchar(format[i]);
-			count++;
-		}
+		_putchar(*str);
+		str++;
+		(*count)++;
 	}
-	va_end(list);
-	return (count);
+}
+
+/**
+ * handle_char - print a character
+ * @list: variable argument
+ * @count: number count
+ * Return: Void
+ */
+void handle_char(va_list list, int *count)
+{
+	_putchar((char)va_arg(list, int));
+	(*count)++;
+}
+
+/**
+ * handle_percent - handles percent
+ * @count: arg count
+ * Return: Void
+ */
+void handle_percent(int *count)
+{
+	_putchar('%');
+	(*count)++;
 }
