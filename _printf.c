@@ -15,6 +15,7 @@ int _printf(const char *format, ...)
 		{"%", handle_percent}
 	};
 	va_list args;
+
 	va_start(args, format);
 
 	for (; format[i] != '\0'; i++)
