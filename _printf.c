@@ -10,11 +10,12 @@ int _printf(const char *format, ...)
 {
 	int count = 0, i = 0, j = 0;
 	_search _array[] = {
-		{"s", handle_string},
-		{"c", handle_char},
-		{"%", handle_percent},
-		{"d", handle_int},
-		{"i", handle_int}
+		{'s', handle_string},
+		{'c', handle_char},
+		{'%', handle_percent},
+		{'d', handle_int},
+		{'i', handle_int},
+		{'b', convert_2_binary}
 	};
 	va_list args;
 
@@ -25,9 +26,9 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			for (; j < 3; j++)
+			for (; j < 6; j++)
 			{
-				if (_array[j].str[0] == format[i])
+				if (_array[j].str == format[i])
 				{
 					count += _array[j].f(args);
 					break;

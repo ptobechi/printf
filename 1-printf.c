@@ -8,13 +8,12 @@
 int handle_int(va_list list)
 {
 	int n = va_arg(list, int);
-	int num = n, reversed = 0, count = 0;
+	int num = n, reversed = 0;
 
 	if (num < 0)
 	{
 		_putchar('-');
 		num = -num;
-		count++;
 	}
 
 	while (num > 0)
@@ -28,7 +27,6 @@ int handle_int(va_list list)
 	if (reversed == 0)
 	{
 		_putchar('0');
-		count++;
 	}
 	else
 	{
@@ -38,9 +36,8 @@ int handle_int(va_list list)
 
 			_putchar(digit + '0');
 			reversed /= 10;
-			count++;
 		}
 	}
 
-	return (count);
+	return (1);
 }
