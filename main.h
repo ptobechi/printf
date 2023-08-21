@@ -22,4 +22,7 @@ int handle_char(va_list list);
 int handle_percent(void);
 int handle_int(va_list list);
 int convert_2_binary(va_list list);
+int handle_unsigned_octal(va_list list);
+int handle_unsigned_int(va_list list);
+int handle_hexadecimal(va_list list);
 #endif /*_MAIN_*/

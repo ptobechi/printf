@@ -16,6 +16,10 @@ int _printf(const char *format, ...)
 		{'d', handle_int},
 		{'i', handle_int},
 		{'b', convert_2_binary}
+		{'u', handle_unsigned_int}
+		{'o', handle_unsigned_octal}
+		{'x', handle_hexadecimal}
+		{'X', handle_hexadecimal}
 	};
 	va_list args;
 
@@ -26,7 +30,7 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			for (; j < 6; j++)
+			for (; j < 10; j++)
 			{
 				if (_array[j].str == format[i])
 				{
