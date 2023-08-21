@@ -6,37 +6,40 @@
  * @count: argument count
  * Return: void
  */
-void handle_int(va_list list, int *count)
+int handle_int(va_list list)
 {
-	int digit = va_arg(list, int);
-	int digitCount = 0;
-	int i, j;
+	int n = va_arg(list, int);
+	int num, last = n % 10, digit, exp = 1;
+	int count = 0;
 
-	if (digit == 0)
-		digitCount = 1;
-	else
-	{
-		while (digit != 0)
-		{
-			digit /= 10;
-			digitCount++;
-		}
-	}
+	n = n / 10;
+	num = n;
 
-	if (digit < 0)
+	if (last < 0)
 	{
 		_putchar('-');
-		(*count)++;
-		digit = -digit;
+		num = -num;
+		n = -n;
+		last = -last;
+		count++;
 	}
-
-	for (i = 0; i < digitCount; i++)
+	if (num > 0)
 	{
-		int divisor = 1;
-		for (j = 1; j < digitCount- i; j++)
-			divisor *= 10;
-		int digit = (num / divisor) % 10;
-		_putchar('0' + digit);
-		(*count)++;
+		while (num / 10 != 0)
+		{
+			exp = exp * 10;
+			num = num / 10;
+		}
+		num = n;
+		while (exp > 0)
+		{
+			digit = num / exp;
+			_putchar(digit + '0');
+			num = num - (digit * exp);
+			exp = exp / 10;
+			count++;
+		}
 	}
+	_putchar(last + '0');
+	return (count);
 }

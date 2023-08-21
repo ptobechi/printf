@@ -3,40 +3,39 @@
 /**
  * handle_string - print string values
  * @list: variable arguments
- * @count: strinng count
  * Return: Void
  */
-void handle_string(va_list list, int *count)
+int handle_string(va_list list)
 {
 	char *str = va_arg(list, char *);
+	int count = 0;
 
 	while (*str)
 	{
 		_putchar(*str);
 		str++;
-		(*count)++;
+		count++;
 	}
+	return (count);
 }
 
 /**
  * handle_char - print a character
  * @list: variable argument
- * @count: number count
  * Return: Void
  */
-void handle_char(va_list list, int *count)
+int handle_char(va_list list)
 {
 	_putchar((char)va_arg(list, int));
-	(*count)++;
+	return (1);
 }
 
 /**
  * handle_percent - handles percent
- * @count: arg count
  * Return: Void
  */
-void handle_percent(int *count)
+int handle_percent(void)
 {
 	_putchar('%');
-	(*count)++;
+	return (1);
 }

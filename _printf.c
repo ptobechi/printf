@@ -27,7 +27,7 @@ int _printf(const char *format, ...)
 			{
 				if (_array[j].str[0] == format[i])
 				{
-				_array[j].f(args, &count);
+				count += _array[j].f(va_arg(args, int));
 				break;
 				}
 			}

@@ -12,12 +12,13 @@
 typedef struct _search
 {
 	const char *str;
-	void (*f)();
+	int (*f)();
 } _search;
-int _putchar(char c);
+
 int _printf(const char *format, ...);
-void handle_string(va_list list, int *count);
-void handle_char(va_list list, int *count);
-void handle_percent(int *count);
-void handle_int(va_list list, int *count);
+int _putchar(char c);
+int handle_string(va_list list);
+int handle_char(va_list list);
+int handle_percent(void);
+int handle_int(va_list list);
 #endif /*_MAIN_*/
