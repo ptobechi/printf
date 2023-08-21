@@ -12,7 +12,9 @@ int _printf(const char *format, ...)
 	_search _array[] = {
 		{"s", handle_string},
 		{"c", handle_char},
-		{"%", handle_percent}
+		{"%", handle_percent},
+		{"d", handle_decimal},
+		{"i", handle_int}
 	};
 	va_list args;
 
@@ -27,8 +29,8 @@ int _printf(const char *format, ...)
 			{
 				if (_array[j].str[0] == format[i])
 				{
-				count += _array[j].f(args);
-				break;
+					count += _array[j].f(args);
+					break;
 				}
 			}
 		}

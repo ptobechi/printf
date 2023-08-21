@@ -8,7 +8,7 @@
 int handle_string(va_list list)
 {
 	char *str = va_arg(list, char *);
-	int count = 1;
+	int count = 0;
 
 	while (*str)
 	{

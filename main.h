@@ -21,4 +21,5 @@ int handle_string(va_list list);
 int handle_char(va_list list);
 int handle_percent(void);
 int handle_int(va_list list);
+int handle_decimal(va_list list);
 #endif /*_MAIN_*/
