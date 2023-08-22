@@ -12,8 +12,7 @@ int handle_unsigned_int(va_list list)
 	if (number < 0)
 		return (0);
 
-	/*_putchar(number);*/
-	handle_buffer(number);
+	_putchar(number + '0');
 	return (1);
 }
 
@@ -39,8 +38,7 @@ int handle_unsigned_octal(va_list list)
 
 	for (i = index - 1; i >= 0; i--)
 	{
-		/*_putchar(octal_digits[i] + '0');*/
-		handle_buffer(octal_digits[i]);
+		_putchar(octal_digits[i] + '0');
 	}
 	return (1);
 }
@@ -65,8 +63,7 @@ int handle_hexadecimal(va_list list)
 	}
 
 	for (int i = index - 1; i >= 0; i--)
-		/*_putchar(hex_representation[i] + '0');*/
-		handle_buffer(hex_rep[i]);
+		_putchar(hex_rep[i] + '0');
 
 	return (1);
 }

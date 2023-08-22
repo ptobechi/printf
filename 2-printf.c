@@ -11,7 +11,7 @@ void toBinary(int number)
 	{
 		toBinary(number / 2);
 	}
-	handle_buffer((char)(number % 2 + '0'));
+	_putchar(number % 2 + '0');
 }
 
 /**

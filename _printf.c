@@ -41,13 +41,11 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			handle_buffer((char)format[i]);
+			_putchar(format[i]);
 			char_count++;
 		}
-		flush_buffer();
 	}
 
-	flush_buffer();
 	va_end(args);
 	return (char_count);
 }

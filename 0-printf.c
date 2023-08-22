@@ -12,7 +12,7 @@ int handle_string(va_list list)
 
 	while (*str)
 	{
-		handle_buffer(*str);
+		_putchar(*str);
 		str++;
 		count++;
 	}
@@ -26,8 +26,7 @@ int handle_string(va_list list)
  */
 int handle_char(va_list list)
 {
-	/*_putchar((char)va_arg(list, int));*/
-	handle_buffer((char)va_arg(list, int));
+	_putchar((char)va_arg(list, int));
 	return (1);
 }
 
@@ -37,7 +36,6 @@ int handle_char(va_list list)
  */
 int handle_percent(void)
 {
-	/*_putchar('%');*/
-	handle_buffer('%');
+	_putchar('%');
 	return (1);
 }
