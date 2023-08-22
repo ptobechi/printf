@@ -4,7 +4,6 @@
 #include <unistd.h>
 #include <stdarg.h>
 
-#define BUFFER_SIZE 1024
 
 /**
  * struct _search - function and specifier structure
@@ -17,8 +16,6 @@ typedef struct _search
 	const char str;
 	int (*f)();
 } _search;
-void flush_buffer();
-void handle_buffer(char c);
 int _printf(const char *format, ...);
 int _putchar(char c);
 int handle_string(va_list list);
