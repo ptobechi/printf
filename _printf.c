@@ -15,12 +15,8 @@ int _printf(const char *format, ...)
 		{'%', handle_percent},
 		{'d', handle_int},
 		{'i', handle_int},
-		{'b', convert_2_binary},
-		{'u', handle_unsigned_int},
-		{'o', handle_unsigned_octal},
-		{'x', handle_hexadecimal},
-		{'X', handle_hexadecimal}};
-
+		{'b', convert_2_binary}
+	};
 	va_list args;
 
 	va_start(args, format);
@@ -30,7 +26,7 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			for (; j < 10; j++)
+			for (; j < 6; j++)
 			{
 				if (format[i] == _array[j].str)
 				{
