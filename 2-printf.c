@@ -4,14 +4,14 @@
  * toBinary - convert num to binary
  * @number: int to convert
  * Return: Always 0 (Success)
-*/
+ */
 void toBinary(int number)
 {
 	if (number > 1)
 	{
 		toBinary(number / 2);
 	}
-	_putchar(number % 2 + '0');
+	handle_buffer((char)(number % 2 + '0'));
 }
 
 /**
@@ -29,3 +29,4 @@ int convert_2_binary(va_list list)
 	toBinary(number);
 	return (1);
 }
+

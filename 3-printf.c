@@ -1,147 +1,73 @@
 #include "main.h"
 
-print_unsigned - Prints an unsigned number
-* @types: List a of arguments
-* @_newbuffer: _newBuffer array to handle print
-* @flags:  Calculates active flags
-* @width: get width
-* @precision: Precision specification
-* @size: Size specifier
-* Return: Number of chars printed.
-*/
-int print_unsigned(va_list types, char _new_newbuffer[],
-int flags, int width, int precision, int size)
-{
-int i = _new_newBUFF_SIZE - 2;
-unsigned long int num = va_arg(types, unsigned long int);
-
-num = convert_size_unsgnd(num, size);
-
-if (num == 0)
-_new_newbuffer[i--] = '0';
-
-_new_newbuffer[_new_newBUFF_SIZE - 1] = '\0';
-
-while (num > 0)
-{
-_new_newbuffer[i--] = (num % 10) + '0';
-num /= 10;
-}
-
-i++;
-
-return (write_unsgnd(0, i, _new_newbuffer, flags, width, precision, size))
-}
 /**
-* print_octal - Prints an unsigned number in octal notation
-* @types: Lista of arguments
-* @_new_newbuffer: _newBuffer array to handle print
-* @flags:  Calculates active flags
-* @width: get width
-* @precision: Precision specification
-* @size: Size specifier
-* Return: Number of chars printed
-*/
-int print_octal(va_list types, char _new_newbuffer[],
-int flags, int width, int precision, int size)
+ * handle_unsigned_int - converts int to an unsinged int
+ * @list argument variable
+ * Return: Always 0 (Success)
+ */
+int handle_unsigned_int(va_list list)
 {
+	unsigned int number = (unsigned int)va_arg(list, int);
 
-int i = _new_newBUFF_SIZE - 2;
-unsigned long int num = va_arg(types, unsigned long int);
-unsigned long int init_num = num;
+	if (number < 0)
+		return (0);
 
-UNUSED(width);
-
-num = convert_size_unsgnd(num, size);
-
-if (num == 0)
-_new_newbuffer[i--] = '0';
-
--new_newbuffer[_newBUFF_SIZE - 1] = '\0';
-
-while (num > 0)
-{
-_new_newbuffer[i--] = (num % 8) + '0';
-num /= 8;
+	/*_putchar(number);*/
+	handle_buffer(number);
+	return (1);
 }
-
-if (flags & F_HASH && init_num != 0)
-_newbuffer[i--] = '0';
-
-i++;
-
-return (write_unsgnd(0, i, _new_newbuffer, flags, width, precision, size));
-}
-
-
-
 
 /**
-* print_hexadecimal - Prints an unsigned number in hexadecimal notation
-* @types: Lista of arguments
-* @_new_newbuffer: _newBuffer array to handle print
-* @flags:  Calculates active flags
-* @width: get width
-* @precision: Precision specification
-* @size: Size specifier
-* Return: Number of chars printed
-*/
-int print_hexadecimal(va_list types, char _new_newbuffer[],
-int flags, int width, int precision, int size)
+ * handle_unsigned_octal - converts integer to octal
+ * @list: argument variable
+ * Return: Always 0 (Success)
+ */
+int handle_unsigned_octal(va_list list)
 {
-return (print_hexa(types, "0123456789abcdef", _new_newbuffer,
-flags, 'x', width, precision, size));
+	unsigned int number = (unsigned int)va_arg(list, int);
+	unsigned int octal_digits[20], i = 0, index = 0;
 
+	if (number < 0)
+		return (0);
+
+	while (number > 0)
+	{
+		octal_digits[index] = number % 8;
+		number /= 8;
+		index++;
+	}
+
+	for (i = index - 1; i >= 0; i--)
+	{
+		/*_putchar(octal_digits[i] + '0');*/
+		handle_buffer(octal_digits[i]);
+	}
+	return (1);
 }
-
-
-
 
 /**
-* print_hexa - Prints a hexadecimal number in lower or upper
-* @types: Lista of arguments
-* @map_to: Array of values to map the number to
-* @_newbuffer: Buffer array to handle print
-* @flags:  Calculates active flags
-* @flag_ch: Calculates active flags
-* @width: get width
-* @precision: Precision specification
-* @size: Size specifier
-* @size: Size specification
-* Return: Number of chars printed
-*/
-int print_hexa(va_list types, char map_to[], char _newbuffer[],
-int flags, char flag_ch, int width, int precision, int size)
+ * handle_hexadecimal - converts interger to hexadecimal
+ * @list: argument variable
+ * Return: Always 0 (Success)
+ */
+int handle_hexadecimal(va_list list)
 {
-int i = _newBUFF_SIZE - 2;
-unsigned long int num = va_arg(types, unsigned long int);
-unsigned long int init_num = num;
+	int number = va_arg(list, int);
+	char hex_digits[] = "0123456789ABCDEF";
+	char hex_rep[20];
+	int index = 0;
 
-UNUSED(width);
+	while (number > 0)
+	{
+		hex_rep[index] = hex_digits[number % 16];
+		number /= 16;
+		index++;
+	}
 
-num = convert_size_unsgnd(num, size);
+	for (int i = index - 1; i >= 0; i--)
+		/*_putchar(hex_representation[i] + '0');*/
+		handle_buffer(hex_rep[i]);
 
-if (num == 0)
-_newbuffer[i--] = '0';
-
-_newbuffer[_newBUFF_SIZE - 1] = '\0';
-
-while (num > 0)
-{
-_newbuffer[i--] = map_to[num % 16];
-num /= 16;
+	return (1);
 }
-
-if (flags & F_HASH && init_num != 0)
-{
-_newbuffer[i--] = flag_ch;
-_newbuffer[i--] = '0';
-}
-
-i++;
-
-return (write_unsgnd(0, i,_newbuffer, flags, width, precision, size));
-}
-
-
 

@@ -12,7 +12,7 @@ int handle_int(va_list list)
 
 	if (num < 0)
 	{
-		_putchar('-');
+		handle_buffer('-');
 		num = -num;
 	}
 
@@ -26,7 +26,7 @@ int handle_int(va_list list)
 
 	if (reversed == 0)
 	{
-		_putchar('0');
+		handle_buffer('0');
 	}
 	else
 	{
@@ -34,10 +34,11 @@ int handle_int(va_list list)
 		{
 			int digit = reversed % 10;
 
-			_putchar(digit + '0');
+			handle_buffer((char)(digit + '0'));
 			reversed /= 10;
 		}
 	}
 
 	return (1);
 }
+
