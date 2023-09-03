@@ -8,7 +8,7 @@
  */
 int _printf(const char *format, ...)
 {
-	int char_count = 0, i = 0, j = 0;
+	int char_count = 0, i = 0;
 	_search _array[] = {
 		{'s', handle_string},
 		{'c', handle_char},
@@ -21,28 +21,37 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 
-	for (; format[i] != '\0'; i++)
+	while (*format)
 	{
-		if (format[i] == '%')
+		if (*format == '%')
 		{
-			i++;
-			for (; j < 6; j++)
-			{
-				if (format[i] == _array[j].str)
+			format++;
+
+			/*perfom a search on the array structure*/
+			for (; i < (int)sizeof(_array) / (int)sizeof(_array[0]); i++)
+			{	
+				/*if format is found in the array invoke function*/
+				if (*format == _array[i].str)
 				{
-					char_count += _array[j].f(args);
+					char_count += _array[i].f(args);
 					break;
 				}
+			}
+			if (i == (int)sizeof(_array) / sizeof(_array[0]))
+			{
+				/*handle unsuported format specifier errors*/
+				_putchar('%');
+				_putchar(*format);
+				char_count += 2;
 			}
 		}
 		else
 		{
-			_putchar(format[i]);
+			_putchar(*format);
 			char_count++;
 		}
+		format++;
 	}
-
 	va_end(args);
 	return (char_count);
 }
-

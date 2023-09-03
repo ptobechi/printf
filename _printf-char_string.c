@@ -10,11 +10,24 @@ int handle_string(va_list list)
 	char *str = va_arg(list, char *);
 	int count = 0;
 
-	while (*str)
+	if (str == NULL)
 	{
-		_putchar(*str);
-		str++;
-		count++;
+		char *null_ptr = "(null)";
+		while (*null_ptr)
+		{
+			_putchar(*null_ptr);
+			null_ptr++;
+			count++;
+		}
+	}else{
+
+
+		while (*str)
+		{
+			_putchar(*str);
+			str++;
+			count++;
+		}
 	}
 	return (count);
 }
