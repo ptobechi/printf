@@ -13,15 +13,16 @@ int handle_string(va_list list)
 	if (str == NULL)
 	{
 		char *null_ptr = "(null)";
+
 		while (*null_ptr)
 		{
 			_putchar(*null_ptr);
 			null_ptr++;
 			count++;
 		}
-	}else{
-
-
+	}
+	else
+	{
 		while (*str)
 		{
 			_putchar(*str);

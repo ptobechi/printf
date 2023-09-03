@@ -29,7 +29,7 @@ int _printf(const char *format, ...)
 
 			/*perfom a search on the array structure*/
 			for (; i < (int)sizeof(_array) / (int)sizeof(_array[0]); i++)
-			{	
+			{
 				/*if format is found in the array invoke function*/
 				if (*format == _array[i].str)
 				{
