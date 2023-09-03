@@ -13,21 +13,21 @@ This is a basic implementation of the `printf` function in C, which includes sup
 1. Clone the repository to your local machine:
 
    ```
-   git clone https://github.com/yourusername/printf-project.git
+   git clone https://github.com/yourusername/printf.git
    ```
 
 2. Compile the program:
 
    ```
-   gcc *.c -o printf
+   gcc *.c -o _printf
    ```
 
 ## Usage
 
-You can use this `printf` implementation in your C programs by including the `printf.c` file in your project and calling the `my_printf` function just like you would with the standard `printf` function.
+You can use this `_printf` implementation in your C programs by including the `main.h` file in your project and calling the `_printf` function just like you would with the standard `printf` function.
 
 ```c
-#include "printf.h"
+#include "main.h"
 
 int main() {
     int num = 42;
